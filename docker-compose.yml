@@ -1,0 +1,9 @@
+services:
+  mood-scheduler:
+    build: .
+    container_name: mood-scheduler
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs  # 容器裡 logs 資料夾會掛載到主機
+    environment:
+      - TZ=Asia/Taipei

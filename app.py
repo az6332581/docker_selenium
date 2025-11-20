@@ -116,7 +116,6 @@ def run_selenium_job():
         log_message("=== 開始執行 Selenium 截圖任務 ===")
 
         options = Options()
-        options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--force-device-scale-factor=0.67")
@@ -220,10 +219,16 @@ def run_selenium_job():
 
 
 
+
+log_message("🕛 自動截圖排程啟動中，每天 00:55 會執行 Selenium 測試。 test1")
+
+
+run_selenium_job()
+
+
 # === 每天執行時間（測試時可改成幾分鐘後） ===
 schedule.every().day.at("00:05").do(run_selenium_job)
 
-log_message("🕛 自動截圖排程啟動中，每天 00:00 會執行 Selenium 測試。")
 while True:
     schedule.run_pending()
     time.sleep(60)
